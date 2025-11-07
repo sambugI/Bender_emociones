@@ -1,0 +1,14 @@
+# Goal
+string emotion_name
+
+---
+# Result
+bool success
+string message
+
+---
+# Feedback
+string previous_emotion
+string current_status
+
+
