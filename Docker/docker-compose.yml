@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  ros_ollama:
+    image: bender_llm
+    container_name: ros_ollama
+    privileged: true   # necesario para Ollama
+    ports:
+      - "11434:11434"  # puerto de Ollama
+    volumes:
+      - ollama:/root/.ollama  # persistir modelos
+      - ./config:/config      # opcional, para tu cyclonedds.xml
+    runtime: nvidia           # GPU (si usas NVIDIA)
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    command: >
+      bash -c "
+        ollama serve &
+        source /opt/ros/jazzy/setup.bash &&
+        tail -f /dev/null
+      "
+
+volumes:
+  ollama:
+

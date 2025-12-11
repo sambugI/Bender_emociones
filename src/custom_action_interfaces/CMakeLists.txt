@@ -10,6 +10,7 @@ find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "action/Emotion.action"
+  "action/SpeakEmotion.action"  # ← Agregar esta línea
   DEPENDENCIES builtin_interfaces
 )
 

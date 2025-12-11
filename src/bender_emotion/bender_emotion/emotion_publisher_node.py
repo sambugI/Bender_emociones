@@ -25,6 +25,7 @@ class EmotionPublisherNode(Node):
         # Diccionario de emociones y coordenadas
         self.emotions = {
             "off": [[10.62, 62.70, 219.73]],
+            "talking": [[10.62, 62.70, 219.73]],
             "felicidad": [[10.62, 62.70, 219.73]],
             "sorpresa": [[10.62, 62.70, 219.73]],
             "tranqui": [[10.62, 62.70, 219.73]],
@@ -52,11 +53,14 @@ class EmotionPublisherNode(Node):
         self.publish_emotion(emotion)
 
     def publish_emotion(self, emotion: str):
+        if emotion == "tranquilo":
+            emotion = "tranqui"
+
         """Publica los mensajes correspondientes a la emoción y su nombre."""
         if emotion not in self.emotions:
             self.get_logger().error(f"Emoción desconocida: {emotion}")
             return
-
+        
         poses = self.emotions[emotion]
 
         # Publicar nombre de la emoción
@@ -88,7 +92,6 @@ class EmotionPublisherNode(Node):
             msg.data = poses[0]
             self.publisher_.publish(msg)
             self.get_logger().info(f"Publicado brillo: {poses[0]}")
-
         else:
             msg = Float64MultiArray()
             msg.data = poses[0]
@@ -105,7 +108,6 @@ def main(args=None):
         node.get_logger().info("Nodo interrumpido por el usuario.")
     finally:
         node.destroy_node()
-        rclpy.shutdown()
 
 
 if __name__ == '__main__':

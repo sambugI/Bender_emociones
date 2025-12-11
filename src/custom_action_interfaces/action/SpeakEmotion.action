@@ -1,0 +1,11 @@
+# Goal: Duración del habla en segundos
+float32 duration
+---
+# Result: Si completó exitosamente
+bool success
+string message
+---
+# Feedback: Tiempo transcurrido y estado actual
+float32 elapsed_time
+string current_status
+

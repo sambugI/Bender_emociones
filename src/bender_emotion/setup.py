@@ -23,6 +23,7 @@ setup(
     entry_points={
         'console_scripts': [
             'action_server = bender_emotion.action_server:main',
+            'speak_action_server = bender_emotion.speak_action_server:main',
             'emo_serial_propio = bender_emotion.emo_serial_propio:main',
             'emo_serial = bender_emotion.emo_serial:main',
             'emotion_publisher_node = bender_emotion.emotion_publisher_node:main',

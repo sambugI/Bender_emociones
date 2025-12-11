@@ -32,7 +32,7 @@ def generate_launch_description():
             name='emotion_sender',
             output='screen',
             parameters=[{
-                'serial_port': '/dev/ttyUSB0',
+                'serial_port': '/dev/ttyUSB1',
                 'baudrate': 115200
             }]
         ),
@@ -44,7 +44,7 @@ def generate_launch_description():
             name='neck_publisher',
             output='screen',
             parameters=[{
-                'device_name': '/dev/ttyUSB1',
+                'device_name': '/dev/ttyUSB0',
                 'baudrate': 1000000
             }]
         )
